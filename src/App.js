@@ -37,6 +37,15 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleAddCounter = () => {
+    var length = this.state.counters.length;
+    var addCounter = [{ id: length + 1, value: 0 }];
+    var counters = [...this.state.counters];
+    counters = counters.concat(addCounter);
+    this.setState({ counters });
+    console.log("Added counter number " + (length + 1));
+  };
+
   handleReset = () => {
     const counters = [...this.state.counters];
     counters.forEach(function(counter) {
@@ -58,6 +67,7 @@ class App extends Component {
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
+            onAddCounter={this.handleAddCounter}
             onReset={this.handleReset}
           />
         </main>
